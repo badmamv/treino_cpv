@@ -1091,4 +1091,78 @@
         document.querySelectorAll('.day-tab').forEach(button => {
             button.addEventListener('click', () => {
                 document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-                document.query
+                document.querySelector(`#${button.dataset.day}`).classList.add('active');
+
+                // Update button styles
+                document.querySelectorAll('.day-tab').forEach(btn => {
+                    btn.classList.remove('bg-blue-600', 'text-white');
+                    btn.classList.add('text-blue-600');
+                });
+                button.classList.add('bg-blue-600', 'text-white');
+            });
+        });
+
+        // Timer functionality
+        let timer;
+        let timerDuration = 0;
+        let timerStartTime;
+
+        document.getElementById('timer-30').addEventListener('click', () => setTimer(30));
+        document.getElementById('timer-60').addEventListener('click', () => setTimer(60));
+        document.getElementById('timer-90').addEventListener('click', () => setTimer(90));
+
+        document.getElementById('timer-start').addEventListener('click', () => {
+            if (timerDuration > 0) {
+                startTimer();
+            }
+        });
+
+        function setTimer(duration) {
+            timerDuration = duration;
+            document.getElementById('timer-display').textContent = `${duration}s`;
+            document.getElementById('timer-progress').style.width = '100%';
+        }
+
+        function startTimer() {
+            const display = document.getElementById('timer-display');
+            const progressBar = document.getElementById('timer-progress');
+            let timeRemaining = timerDuration;
+            let startTime = Date.now();
+
+            timer = setInterval(() => {
+                const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+                timeRemaining = timerDuration - elapsedTime;
+
+                if (timeRemaining >= 0) {
+                    display.textContent = `${timeRemaining}s`;
+                    progressBar.style.width = `${((timerDuration - timeRemaining) / timerDuration) * 100}%`;
+                } else {
+                    clearInterval(timer);
+                    display.textContent = '00:00';
+                    progressBar.style.width = '0%';
+                }
+            }, 1000);
+        }
+
+        // Save weight functionality
+        document.querySelectorAll('.save-weight').forEach(button => {
+            button.addEventListener('click', () => {
+                const exercise = button.closest('.exercise-card').querySelector('.weight-input').dataset.exercise;
+                const weight = button.closest('.exercise-card').querySelector('.weight-input').value;
+                const historyElement = document.getElementById(`history-${exercise}`);
+
+                if (weight) {
+                    const date = new Date().toLocaleDateString('pt-BR');
+                    const newEntry = document.createElement('div');
+                    newEntry.classList.add('flex', 'justify-between', 'text-gray-600');
+                    newEntry.innerHTML = `<span>${date}</span><span>${weight} kg</span>`;
+                    historyElement.appendChild(newEntry);
+
+                    // Clear input
+                    button.closest('.exercise-card').querySelector('.weight-input').value = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
