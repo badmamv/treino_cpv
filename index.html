@@ -46,6 +46,15 @@
                 display: none !important;
             }
         }
+        .day-tab.bg-blue-600 {
+            color: #fff !important;
+        }
+        .delete-weight-entry {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0 0.5rem;
+        }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
@@ -59,7 +68,6 @@
             </div>
         </div>
     </header>
-
     <div class="container mx-auto px-4 py-6">
         <!-- Tabs for Days -->
         <div class="mb-6 overflow-x-auto no-print">
@@ -94,1006 +102,845 @@
             </div>
         </div>
 
-        <!-- Content for each day -->
-        <div id="Segunda" class="tab-content active">
-            <h2 class="text-xl font-bold mb-4 text-gray-800">Segunda - Treino de Peito</h2>
-            <div class="bg-white rounded-lg shadow p-4 mb-6">
-                <h3 class="font-semibold mb-2">Instruções Gerais</h3>
-                <p class="text-sm text-gray-600"><strong>Aquecimento (5 min):</strong> 5 minutos de cardio leve (bicicleta, elíptico ou esteira) + alongamentos dinâmicos para o peito.</p>
-                <p class="text-sm text-gray-600"><strong>Cardio (10-15 min):</strong> Após o treino, faça 10-15 minutos de cardio moderado (esteira, bicicleta, elíptico).</p>
-                <p class="text-sm text-gray-600"><strong>Resfriamento (5 min):</strong> Alongamentos estáticos para o peito.</p>
-                <p class="text-sm text-gray-600"><strong>Nota:</strong> Concentre-se na forma correta, controle a fase excêntrica, e chegue próximo à falha muscular controlada.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Exercise 1 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/barbell-bench-press.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Supino Reto (Barra ou Halteres)</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 4</div>
-                            <div><strong>Repetições:</strong> 8-12</div>
-                            <div><strong>Descanso:</strong> 60-90 segundos</div>
-                            <div><strong>Obs:</strong> Concentre-se na forma correta</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="supino-reto">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-supino-reto">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>10/06/2023</span>
-                                    <span>75 kg</span>
-                                </div>
-                            </div>
-                        </div>
+       <!-- Segunda-feira: Peito -->
+<div id="Segunda" class="tab-content active">
+    <h2 class="text-xl font-bold mb-4 text-gray-800">Segunda - Peito</h2>
+    <div class="bg-white rounded-lg shadow p-4 mb-6">
+        <h3 class="font-semibold mb-2">Instruções Gerais</h3>
+        <ul class="text-sm text-gray-600 mb-2">
+            <li><strong>Aquecimento (5 min):</strong> Cardio leve + alongamento dinâmico.</li>
+            <li><strong>Cardio (10-15 min):</strong> Após o treino, intensidade moderada.</li>
+            <li><strong>Resfriamento (5 min):</strong> Alongamento estático para peito.</li>
+            <li><strong>Descanso entre séries:</strong> 60-90s compostos, 45-60s isolados.</li>
+            <li><strong>Nota:</strong> Forma correta, controle excêntrico, próximo à falha.</li>
+        </ul>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Supino Reto -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/barbell-bench-press.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Supino Reto (Barra ou Halteres)</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 4</div>
+                    <div><strong>Repetições:</strong> 8-12</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="supino-reto">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
                     </div>
                 </div>
-                <!-- Exercise 2 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/incline-dumbbell-bench-press.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Supino Inclinado (Barra ou Halteres)</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 8-12</div>
-                            <div><strong>Descanso:</strong> 60-90 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="supino-inclinado">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-supino-inclinado">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>10/06/2023</span>
-                                    <span>60 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 3 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/dumbbell-flys.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Crucifixo (Halteres ou Máquina Voador)</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 10-15</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="crucifixo">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-crucifixo">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>10/06/2023</span>
-                                    <span>14 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 4 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/parallel-dips.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Paralelas (Foco no Peito)</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 8-12</div>
-                            <div><strong>Descanso:</strong> 60-90 segundos</div>
-                            <div><strong>Obs:</strong> Tronco inclinado à frente; use Supino Declinado se preferir</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="paralelas">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-paralelas">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>10/06/2023</span>
-                                    <span>0 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 5 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/push-ups.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Flexões (Push-ups)</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> Até a falha</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                            <div><strong>Obs:</strong> Como finalizador</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="flexoes">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-flexoes">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>10/06/2023</span>
-                                    <span>0 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-supino-reto"></div>
                 </div>
             </div>
         </div>
-
-        <div id="Terca" class="tab-content">
-            <h2 class="text-xl font-bold mb-4 text-gray-800">Terça - Treino de Costas</h2>
-            <div class="bg-white rounded-lg shadow p-4 mb-6">
-                <h3 class="font-semibold mb-2">Instruções Gerais</h3>
-                <p class="text-sm text-gray-600"><strong>Aquecimento (5 min):</strong> 5 minutos de cardio leve + alongamentos dinâmicos para as costas.</p>
-                <p class="text-sm text-gray-600"><strong>Cardio (10-15 min):</strong> Após o treino, faça 10-15 minutos de cardio moderado.</p>
-                <p class="text-sm text-gray-600"><strong>Resfriamento (5 min):</strong> Alongamentos estáticos para as costas.</p>
-                <p class="text-sm text-gray-600"><strong>Nota:</strong> Concentre-se na forma correta, controle a fase excêntrica, e chegue próximo à falha muscular controlada.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Exercise 1 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/lat-pulldown.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Puxada Alta na Polia</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 4</div>
-                            <div><strong>Repetições:</strong> 8-12</div>
-                            <div><strong>Descanso:</strong> 60-90 segundos</div>
-                            <div><strong>Obs:</strong> Use assistência se necessário</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="puxada-alta">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-puxada-alta">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>11/06/2023</span>
-                                    <span>65 kg</span>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Supino Inclinado -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/incline-dumbbell-bench-press.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Supino Inclinado (Barra ou Halteres)</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 8-12</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="supino-inclinado">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
                     </div>
                 </div>
-                <!-- Exercise 2 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/barbell-row.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Remada Curvada (Barra)</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 4</div>
-                            <div><strong>Repetições:</strong> 8-12</div>
-                            <div><strong>Descanso:</strong> 60-90 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="remada-curvada">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-remada-curvada">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>11/06/2023</span>
-                                    <span>70 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 3 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/dumbbell-row.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Remada Unilateral com Halter</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 10-12 (por lado)</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="remada-unilateral">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-remada-unilateral">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>11/06/2023</span>
-                                    <span>30 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 4 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/seated-cable-row.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Remada Sentada na Polia</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 10-15</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                            <div><strong>Obs:</strong> Pegada neutra/triângulo</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="remada-sentada">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-remada-sentada">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>11/06/2023</span>
-                                    <span>50 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 5 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/hyperextension.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Hiperextensão Lombar</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 12-15</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                            <div><strong>Obs:</strong> Com ou sem peso adicional</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="hiperextensao">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-hiperextensao">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>11/06/2023</span>
-                                    <span>0 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-supino-inclinado"></div>
                 </div>
             </div>
         </div>
-
-        <div id="Quarta" class="tab-content">
-            <h2 class="text-xl font-bold mb-4 text-gray-800">Quarta - Treino de Pernas</h2>
-            <div class="bg-white rounded-lg shadow p-4 mb-6">
-                <h3 class="font-semibold mb-2">Instruções Gerais</h3>
-                <p class="text-sm text-gray-600"><strong>Aquecimento (5 min):</strong> 5 minutos de cardio leve + alongamentos dinâmicos para as pernas.</p>
-                <p class="text-sm text-gray-600"><strong>Cardio (10-15 min):</strong> Após o treino, faça 10-15 minutos de cardio moderado.</p>
-                <p class="text-sm text-gray-600"><strong>Resfriamento (5 min):</strong> Alongamentos estáticos para as pernas.</p>
-                <p class="text-sm text-gray-600"><strong>Nota:</strong> Concentre-se na forma correta, controle a fase excêntrica, e chegue próximo à falha muscular controlada.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Exercise 1 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/barbell-squat.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Agachamento Livre com Barra</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 4</div>
-                            <div><strong>Repetições:</strong> 8-12</div>
-                            <div><strong>Descanso:</strong> 60-90 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="agachamento">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-agachamento">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>12/06/2023</span>
-                                    <span>80 kg</span>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Crucifixo -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/dumbbell-flys.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Crucifixo (Halteres ou Peck Deck)</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 10-15</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="crucifixo">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
                     </div>
                 </div>
-                <!-- Exercise 2 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/leg-press.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Leg Press (45º)</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 10-15</div>
-                            <div><strong>Descanso:</strong> 60-90 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="leg-press">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-leg-press">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>12/06/2023</span>
-                                    <span>100 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 3 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/leg-extension.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Cadeira Extensora</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 12-15</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="cadeira-extensora">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-cadeira-extensora">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>12/06/2023</span>
-                                    <span>40 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 4 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/leg-curl.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Mesa Flexora</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 12-15</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="mesa-flexora">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-mesa-flexora">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>12/06/2023</span>
-                                    <span>35 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 5 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/calf-raise.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Panturrilha em Pé</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 4</div>
-                            <div><strong>Repetições:</strong> 15-20</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="panturrilha">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-panturrilha">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>12/06/2023</span>
-                                    <span>50 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-crucifixo"></div>
                 </div>
             </div>
         </div>
-
-        <div id="Quinta" class="tab-content">
-            <h2 class="text-xl font-bold mb-4 text-gray-800">Quinta - Treino de Ombros</h2>
-            <div class="bg-white rounded-lg shadow p-4 mb-6">
-                <h3 class="font-semibold mb-2">Instruções Gerais</h3>
-                <p class="text-sm text-gray-600"><strong>Aquecimento (5 min):</strong> 5 minutos de cardio leve + alongamentos dinâmicos para os ombros.</p>
-                <p class="text-sm text-gray-600"><strong>Cardio (10-15 min):</strong> Após o treino, faça 10-15 minutos de cardio moderado.</p>
-                <p class="text-sm text-gray-600"><strong>Resfriamento (5 min):</strong> Alongamentos estáticos para os ombros.</p>
-                <p class="text-sm text-gray-600"><strong>Nota:</strong> Concentre-se na forma correta, controle a fase excêntrica, e chegue próximo à falha muscular controlada.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Exercise 1 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/dumbbell-shoulder-press.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Desenvolvimento com Halteres</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 4</div>
-                            <div><strong>Repetições:</strong> 8-12</div>
-                            <div><strong>Descanso:</strong> 60-90 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="desenvolvimento">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-desenvolvimento">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>13/06/2023</span>
-                                    <span>20 kg</span>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Paralelas -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/parallel-dips.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Paralelas (Foco no Peito)</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 8-12</div>
+                    <div><strong>Obs:</strong> Tronco inclinado à frente (ou Supino Declinado)</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="paralelas">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
                     </div>
                 </div>
-                <!-- Exercise 2 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/lateral-raise.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Elevação Lateral com Halteres</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 10-15</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="elevacao-lateral">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-elevacao-lateral">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>13/06/2023</span>
-                                    <span>10 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 3 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/front-raise.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Elevação Frontal com Halteres</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 10-15</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                            <div><strong>Obs:</strong> Alternado ou simultâneo</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="elevacao-frontal">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-elevacao-frontal">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>13/06/2023</span>
-                                    <span>8 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 4 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/upright-row.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Remada Alta com Barra</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 10-12</div>
-                            <div><strong>Descanso:</strong> 60-90 segundos</div>
-                            <div><strong>Obs:</strong> Cuidado com a execução</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="remada-alta">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-remada-alta">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>13/06/2023</span>
-                                    <span>30 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 5 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/dumbbell-shrug.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Encolhimento com Halteres</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 12-15</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                            <div><strong>Obs:</strong> Foco no trapézio</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="encolhimento">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-encolhimento">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>13/06/2023</span>
-                                    <span>25 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-paralelas"></div>
                 </div>
             </div>
         </div>
-
-        <div id="Sexta" class="tab-content">
-            <h2 class="text-xl font-bold mb-4 text-gray-800">Sexta - Treino de Bíceps</h2>
-            <div class="bg-white rounded-lg shadow p-4 mb-6">
-                <h3 class="font-semibold mb-2">Instruções Gerais</h3>
-                <p class="text-sm text-gray-600"><strong>Aquecimento (5 min):</strong> 5 minutos de cardio leve + alongamentos dinâmicos para os bíceps.</p>
-                <p class="text-sm text-gray-600"><strong>Cardio (10-15 min):</strong> Após o treino, faça 10-15 minutos de cardio moderado.</p>
-                <p class="text-sm text-gray-600"><strong>Resfriamento (5 min):</strong> Alongamentos estáticos para os bíceps.</p>
-                <p class="text-sm text-gray-600"><strong>Nota:</strong> Concentre-se na forma correta, controle a fase excêntrica, e chegue próximo à falha muscular controlada.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Exercise 1 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/barbell-curl.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Rosca Direta com Barra W ou Reta</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 4</div>
-                            <div><strong>Repetições:</strong> 8-12</div>
-                            <div><strong>Descanso:</strong> 60-90 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="rosca-direta">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-rosca-direta">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>14/06/2023</span>
-                                    <span>30 kg</span>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Flexões -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/push-ups.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Flexões (Push-ups)</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> Até a falha</div>
+                    <div><strong>Obs:</strong> Finalizador</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="flexoes">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
                     </div>
                 </div>
-                <!-- Exercise 2 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/dumbbell-curl.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Rosca Alternada com Halteres</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 10-12 (por braço)</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="rosca-alternada">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-rosca-alternada">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>14/06/2023</span>
-                                    <span>12 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 3 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/preacher-curl.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Rosca Scott na Máquina</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 10-15</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="rosca-scott">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-rosca-scott">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>14/06/2023</span>
-                                    <span>25 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 4 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/hammer-curl.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Rosca Martelo com Halteres</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 10-12</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="rosca-martelo">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-rosca-martelo">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>14/06/2023</span>
-                                    <span>15 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 5 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/reverse-curl.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Rosca Inversa com Barra</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 12-15</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="rosca-inversa">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-rosca-inversa">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>14/06/2023</span>
-                                    <span>20 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="Sabado" class="tab-content">
-            <h2 class="text-xl font-bold mb-4 text-gray-800">Sábado - Treino de Tríceps</h2>
-            <div class="bg-white rounded-lg shadow p-4 mb-6">
-                <h3 class="font-semibold mb-2">Instruções Gerais</h3>
-                <p class="text-sm text-gray-600"><strong>Aquecimento (5 min):</strong> 5 minutos de cardio leve + alongamentos dinâmicos para os tríceps.</p>
-                <p class="text-sm text-gray-600"><strong>Cardio (10-15 min):</strong> Após o treino, faça 10-15 minutos de cardio moderado.</p>
-                <p class="text-sm text-gray-600"><strong>Resfriamento (5 min):</strong> Alongamentos estáticos para os tríceps.</p>
-                <p class="text-sm text-gray-600"><strong>Nota:</strong> Concentre-se na forma correta, controle a fase excêntrica, e chegue próximo à falha muscular controlada.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Exercise 1 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/close-grip-bench-press.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Supino Fechado</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 4</div>
-                            <div><strong>Repetições:</strong> 8-12</div>
-                            <div><strong>Descanso:</strong> 60-90 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="supino-fechado">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-supino-fechado">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>15/06/2023</span>
-                                    <span>60 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 2 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/skull-crusher.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Tríceps Testa com Barra W</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 10-12</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="triceps-testa">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-triceps-testa">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>15/06/2023</span>
-                                    <span>25 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 3 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/tricep-pushdown.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Tríceps na Polia Alta com Corda</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 10-15</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="triceps-polia">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-triceps-polia">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>15/06/2023</span>
-                                    <span>30 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 4 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/overhead-tricep-extension.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Tríceps Francês Unilateral com Halter</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> 10-15</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="triceps-frances">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-triceps-frances">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>15/06/2023</span>
-                                    <span>10 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Exercise 5 -->
-                <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-                    <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/bench-dip.gif')"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Mergulho entre Bancos</h3>
-                        <div class="text-sm text-gray-600 mb-3">
-                            <div><strong>Séries:</strong> 3</div>
-                            <div><strong>Repetições:</strong> Até a falha</div>
-                            <div><strong>Descanso:</strong> 45-60 segundos</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                            <div class="flex">
-                                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="mergulho">
-                                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                            <div class="weight-history text-sm" id="history-mergulho">
-                                <div class="flex justify-between text-gray-600">
-                                    <span>15/06/2023</span>
-                                    <span>0 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-flexoes"></div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Terça-feira: Costas -->
+<div id="Terca" class="tab-content">
+    <h2 class="text-xl font-bold mb-4 text-gray-800">Terça - Costas</h2>
+    <div class="bg-white rounded-lg shadow p-4 mb-6">
+        <h3 class="font-semibold mb-2">Instruções Gerais</h3>
+        <ul class="text-sm text-gray-600 mb-2">
+            <li><strong>Aquecimento (5 min):</strong> Cardio leve + alongamento dinâmico.</li>
+            <li><strong>Cardio (10-15 min):</strong> Após o treino, intensidade moderada.</li>
+            <li><strong>Resfriamento (5 min):</strong> Alongamento estático para costas.</li>
+            <li><strong>Descanso entre séries:</strong> 60-90s compostos, 45-60s isolados.</li>
+            <li><strong>Nota:</strong> Forma correta, controle excêntrico, próximo à falha.</li>
+        </ul>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Barra Fixa ou Puxada Alta -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/lat-pulldown.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Barra Fixa ou Puxada Alta na Polia</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 4</div>
+                    <div><strong>Repetições:</strong> 8-12</div>
+                    <div><strong>Obs:</strong> Use assistência se necessário</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="puxada-alta">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-puxada-alta"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Remada Curvada -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/barbell-row.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Remada Curvada (Barra) ou Cavalinho</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 4</div>
+                    <div><strong>Repetições:</strong> 8-12</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="remada-curvada">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-remada-curvada"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Remada Unilateral -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/dumbbell-row.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Remada Unilateral com Halter</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 10-12 (por lado)</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="remada-unilateral">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-remada-unilateral"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Remada Sentada -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/seated-cable-row.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Remada Sentada na Polia</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 10-15</div>
+                    <div><strong>Obs:</strong> Pegada neutra/triângulo</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="remada-sentada">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-remada-sentada"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Hiperextensão Lombar -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/hyperextension.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Hiperextensão Lombar</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 12-15</div>
+                    <div><strong>Obs:</strong> Com ou sem peso adicional</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="hiperextensao">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-hiperextensao"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quarta-feira: Pernas (Foco Geral) -->
+<div id="Quarta" class="tab-content">
+    <h2 class="text-xl font-bold mb-4 text-gray-800">Quarta - Pernas (Foco Geral)</h2>
+    <div class="bg-white rounded-lg shadow p-4 mb-6">
+        <h3 class="font-semibold mb-2">Instruções Gerais</h3>
+        <ul class="text-sm text-gray-600 mb-2">
+            <li><strong>Aquecimento (5 min):</strong> Cardio leve + alongamento dinâmico.</li>
+            <li><strong>Cardio (10-15 min):</strong> Após o treino, intensidade moderada.</li>
+            <li><strong>Resfriamento (5 min):</strong> Alongamento estático para pernas.</li>
+            <li><strong>Descanso entre séries:</strong> 60-90s compostos, 45-60s isolados.</li>
+            <li><strong>Nota:</strong> Forma correta, controle excêntrico, próximo à falha.</li>
+        </ul>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Agachamento Livre com Barra -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/barbell-squat.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Agachamento Livre com Barra</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 4</div>
+                    <div><strong>Repetições:</strong> 8-12</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="agachamento">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-agachamento"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Leg Press -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/leg-press.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Leg Press (45º)</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 10-15</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="leg-press">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-leg-press"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Cadeira Extensora -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/leg-extension.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Cadeira Extensora</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 12-15</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="cadeira-extensora">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-cadeira-extensora"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Mesa Flexora -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/leg-curl.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Mesa Flexora</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 12-15</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="mesa-flexora">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-mesa-flexora"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Panturrilha em Pé -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/calf-raise.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Panturrilha em Pé</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 4</div>
+                    <div><strong>Repetições:</strong> 15-20</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="panturrilha">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-panturrilha"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quinta-feira: Ombro -->
+<div id="Quinta" class="tab-content">
+    <h2 class="text-xl font-bold mb-4 text-gray-800">Quinta - Ombro</h2>
+    <div class="bg-white rounded-lg shadow p-4 mb-6">
+        <h3 class="font-semibold mb-2">Instruções Gerais</h3>
+        <ul class="text-sm text-gray-600 mb-2">
+            <li><strong>Aquecimento (5 min):</strong> Cardio leve + alongamento dinâmico.</li>
+            <li><strong>Cardio (10-15 min):</strong> Após o treino, intensidade moderada.</li>
+            <li><strong>Resfriamento (5 min):</strong> Alongamento estático para ombros.</li>
+            <li><strong>Descanso entre séries:</strong> 60-90s compostos, 45-60s isolados.</li>
+            <li><strong>Nota:</strong> Forma correta, controle excêntrico, próximo à falha.</li>
+        </ul>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Desenvolvimento com Halteres -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/dumbbell-shoulder-press.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Desenvolvimento com Halteres</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 4</div>
+                    <div><strong>Repetições:</strong> 8-12</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="desenvolvimento">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-desenvolvimento"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Elevação Lateral -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/lateral-raise.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Elevação Lateral com Halteres</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 10-15</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="elevacao-lateral">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-elevacao-lateral"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Elevação Frontal -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/front-raise.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Elevação Frontal com Halteres</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 10-15</div>
+                    <div><strong>Obs:</strong> Alternado ou simultâneo</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="elevacao-frontal">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-elevacao-frontal"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Remada Alta -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/upright-row.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Remada Alta com Barra ou Halteres</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 10-12</div>
+                    <div><strong>Obs:</strong> Cuidado com a execução</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="remada-alta">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-remada-alta"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Encolhimento com Halteres -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/dumbbell-shrug.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Encolhimento com Halteres (Trapézio)</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 12-15</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="encolhimento">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-encolhimento"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sexta-feira: Bíceps -->
+<div id="Sexta" class="tab-content">
+    <h2 class="text-xl font-bold mb-4 text-gray-800">Sexta - Bíceps</h2>
+    <div class="bg-white rounded-lg shadow p-4 mb-6">
+        <h3 class="font-semibold mb-2">Instruções Gerais</h3>
+        <ul class="text-sm text-gray-600 mb-2">
+            <li><strong>Aquecimento (5 min):</strong> Cardio leve + alongamento dinâmico.</li>
+            <li><strong>Cardio (10-15 min):</strong> Após o treino, intensidade moderada.</li>
+            <li><strong>Resfriamento (5 min):</strong> Alongamento estático para bíceps.</li>
+            <li><strong>Descanso entre séries:</strong> 60-90s compostos, 45-60s isolados.</li>
+            <li><strong>Nota:</strong> Forma correta, controle excêntrico, próximo à falha.</li>
+        </ul>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Rosca Direta com Barra W ou Reta -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/barbell-curl.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Rosca Direta com Barra W ou Reta</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 4</div>
+                    <div><strong>Repetições:</strong> 8-12</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="rosca-direta">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-rosca-direta"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Rosca Alternada com Halteres -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/dumbbell-curl.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Rosca Alternada com Halteres</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 10-12 (por braço)</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="rosca-alternada">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-rosca-alternada"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Rosca Scott na Máquina ou com Barra W -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/preacher-curl.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Rosca Scott na Máquina ou com Barra W</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 10-15</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="rosca-scott">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-rosca-scott"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Rosca Martelo com Halteres -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/hammer-curl.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Rosca Martelo com Halteres</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 10-12</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="rosca-martelo">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-rosca-martelo"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Rosca Inversa com Barra -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/reverse-curl.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Rosca Inversa com Barra</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 12-15</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="rosca-inversa">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-rosca-inversa"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sábado: Tríceps -->
+<div id="Sabado" class="tab-content">
+    <h2 class="text-xl font-bold mb-4 text-gray-800">Sábado - Tríceps</h2>
+    <div class="bg-white rounded-lg shadow p-4 mb-6">
+        <h3 class="font-semibold mb-2">Instruções Gerais</h3>
+        <ul class="text-sm text-gray-600 mb-2">
+            <li><strong>Aquecimento (5 min):</strong> Cardio leve + alongamento dinâmico.</li>
+            <li><strong>Cardio (10-15 min):</strong> Após o treino, intensidade moderada.</li>
+            <li><strong>Resfriamento (5 min):</strong> Alongamento estático para tríceps.</li>
+            <li><strong>Descanso entre séries:</strong> 60-90s compostos, 45-60s isolados.</li>
+            <li><strong>Nota:</strong> Forma correta, controle excêntrico, próximo à falha.</li>
+        </ul>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Supino Fechado -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/close-grip-bench-press.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Supino Fechado</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 4</div>
+                    <div><strong>Repetições:</strong> 8-12</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="supino-fechado">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-supino-fechado"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Tríceps Testa -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/skull-crusher.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Tríceps Testa com Barra W ou Halteres</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 10-12</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="triceps-testa">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-triceps-testa"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Tríceps na Polia Alta -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/tricep-pushdown.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Tríceps na Polia Alta com Corda ou Barra</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 10-15</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="triceps-polia">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-triceps-polia"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Tríceps Francês Unilateral -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/overhead-tricep-extension.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Tríceps Francês Unilateral com Halter</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> 10-15</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="triceps-frances">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-triceps-frances"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Mergulho entre Bancos -->
+        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="exercise-image bg-gray-200" style="background-image: url('https://cdn.jsdelivr.net/gh/yuichkun/exercise-gif-images@master/images/bench-dip.gif')"></div>
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">Mergulho entre Bancos</h3>
+                <div class="text-sm text-gray-600 mb-3">
+                    <div><strong>Séries:</strong> 3</div>
+                    <div><strong>Repetições:</strong> Até a falha</div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+                    <div class="flex">
+                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="mergulho">
+                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t pt-3">
+                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+                    <div class="weight-history text-sm" id="history-mergulho"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <script>
-        // Set current date
+        // Data atual
         document.getElementById('current-date').textContent = new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' }).replace(/^\w/, c => c.toUpperCase());
 
-        // Tab switching
+        // Troca de abas
         document.querySelectorAll('.day-tab').forEach(button => {
             button.addEventListener('click', () => {
                 document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
                 document.querySelector(`#${button.dataset.day}`).classList.add('active');
-
-                // Update button styles
                 document.querySelectorAll('.day-tab').forEach(btn => {
                     btn.classList.remove('bg-blue-600', 'text-white');
                     btn.classList.add('text-blue-600');
@@ -1102,15 +949,13 @@
             });
         });
 
-        // Timer functionality
+        // Cronômetro
         let timer;
         let timerDuration = 0;
-        let timerStartTime;
 
         document.getElementById('timer-30').addEventListener('click', () => setTimer(30));
         document.getElementById('timer-60').addEventListener('click', () => setTimer(60));
         document.getElementById('timer-90').addEventListener('click', () => setTimer(90));
-
         document.getElementById('timer-start').addEventListener('click', () => {
             if (timerDuration > 0) {
                 startTimer();
@@ -1144,7 +989,27 @@
             }, 1000);
         }
 
-        // Save weight functionality
+        // Botão de exclusão para históricos já existentes
+        function addDeleteButtonsToHistory() {
+            document.querySelectorAll('.weight-history > div').forEach(entry => {
+                if (!entry.querySelector('.delete-weight-entry')) {
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'delete-weight-entry text-red-500 ml-2';
+                    deleteBtn.title = 'Excluir';
+                    deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                    deleteBtn.addEventListener('click', function() {
+                        entry.remove();
+                    });
+                    entry.appendChild(deleteBtn);
+                } else {
+                    entry.querySelector('.delete-weight-entry').onclick = function() {
+                        entry.remove();
+                    }
+                }
+            });
+        }
+
+        // Salvar peso e adicionar ao histórico
         document.querySelectorAll('.save-weight').forEach(button => {
             button.addEventListener('click', () => {
                 const exercise = button.closest('.exercise-card').querySelector('.weight-input').dataset.exercise;
@@ -1154,15 +1019,25 @@
                 if (weight) {
                     const date = new Date().toLocaleDateString('pt-BR');
                     const newEntry = document.createElement('div');
-                    newEntry.classList.add('flex', 'justify-between', 'text-gray-600');
-                    newEntry.innerHTML = `<span>${date}</span><span>${weight} kg</span>`;
+                    newEntry.classList.add('flex', 'justify-between', 'text-gray-600', 'items-center');
+                    newEntry.innerHTML = `
+                        <span>${date}</span>
+                        <span>${weight} kg</span>
+                        <button class="delete-weight-entry text-red-500 ml-2" title="Excluir"><i class="fas fa-trash"></i></button>
+                    `;
+                    newEntry.querySelector('.delete-weight-entry').addEventListener('click', function() {
+                        newEntry.remove();
+                    });
                     historyElement.appendChild(newEntry);
 
-                    // Clear input
+                    // Limpa input
                     button.closest('.exercise-card').querySelector('.weight-input').value = '';
                 }
             });
         });
+
+        // Adiciona botão de exclusão ao carregar a página
+        addDeleteButtonsToHistory();
     </script>
 </body>
 </html>
