@@ -119,31 +119,55 @@
         </ul>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Supino Reto -->
-        <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
-            <div class="exercise-image bg-gray-200" style="background-image: url('https://media1.tenor.com/m/FxBO7P1kj6kAAAAC/gym.gif')"></div>
-
-            <div class="p-4">
-                <h3 class="font-bold text-lg mb-2">Supino Reto (Barra ou Halteres)</h3>
-                <div class="text-sm text-gray-600 mb-3">
-                    <div><strong>Séries:</strong> 4</div>
-                    <div><strong>Repetições:</strong> 8-12</div>
-                </div>
-                <div class="mb-3">
-                    <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
-                    <div class="flex">
-                        <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="supino-reto">
-                        <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            <i class="fas fa-save"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="border-t pt-3">
-                    <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
-                    <div class="weight-history text-sm" id="history-supino-reto"></div>
-                </div>
+        <!-- Supino Reto com Carrossel de GIFs -->
+<div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
+    <div class="relative w-full bg-gray-200" style="height: 200px;">
+        <img id="gif-supino-reto" src="https://media1.tenor.com/m/FxBO7P1kj6kAAAAC/gym.gif" alt="Supino Reto" class="w-full h-full object-contain">
+        <!-- Botões de navegação -->
+        <button id="prev-gif-supino" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 rounded-full px-2 py-1 text-xl shadow hover:bg-opacity-100">❮</button>
+        <button id="next-gif-supino" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 rounded-full px-2 py-1 text-xl shadow hover:bg-opacity-100">❯</button>
+    </div>
+    <div class="p-4">
+        <h3 class="font-bold text-lg mb-2">Supino Reto (Barra ou Halteres)</h3>
+        <div class="text-sm text-gray-600 mb-3">
+            <div><strong>Séries:</strong> 4</div>
+            <div><strong>Repetições:</strong> 8-12</div>
+        </div>
+        <div class="mb-3">
+            <label class="block text-gray-700 text-sm font-bold mb-1">Peso Utilizado (kg)</label>
+            <div class="flex">
+                <input type="number" class="weight-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" placeholder="Adicionar peso" data-exercise="supino-reto">
+                <button class="save-weight ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <i class="fas fa-save"></i>
+                </button>
             </div>
         </div>
+        <div class="border-t pt-3">
+            <h4 class="font-semibold text-sm mb-2">Histórico de Pesos</h4>
+            <div class="weight-history text-sm" id="history-supino-reto"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Carrossel de GIFs para Supino Reto
+    const gifsSupinoReto = [
+        "https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/supino-reto.gif", // GIF 1
+        "https://www.hipertrofia.org/blog/wp-content/uploads/2020/06/dumbbell-bench-press.gif", // GIF 2
+        // Adicione mais links de GIFs se quiser
+    ];
+    let gifIndexSupino = 0;
+    const gifImgSupino = document.getElementById('gif-supino-reto');
+    document.getElementById('prev-gif-supino').onclick = () => {
+        gifIndexSupino = (gifIndexSupino - 1 + gifsSupinoReto.length) % gifsSupinoReto.length;
+        gifImgSupino.src = gifsSupinoReto[gifIndexSupino];
+    };
+    document.getElementById('next-gif-supino').onclick = () => {
+        gifIndexSupino = (gifIndexSupino + 1) % gifsSupinoReto.length;
+        gifImgSupino.src = gifsSupinoReto[gifIndexSupino];
+    };
+</script>
+
         <!-- Supino Inclinado -->
         <div class="exercise-card bg-white rounded-lg shadow overflow-hidden">
             <div class="exercise-image bg-gray-200" style="background-image: url('https://media1.tenor.com/m/mXQJeQyJCi4AAAAC/bench-press-regular-bench-press.gif')"></div>
