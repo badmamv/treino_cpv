@@ -83,26 +83,27 @@
 
         <!-- Timer Section -->
 
-        <div class="mb-6 bg-white rounded-lg shadow p-4 no-print">
-            <div class="flex items-center justify-between">
-                <h2 class="text-lg font-semibold text-gray-700">Cronômetro de Descanso</h2>
-               <div class="flex items-center">
-    <div class="flex border rounded-lg overflow-hidden mr-2">
-        <button id="timer-30" class="px-3 py-1 bg-gray-200 hover:bg-gray-300 text-sm">30s</button>
-        <button id="timer-60" class="px-3 py-1 bg-gray-200 hover:bg-gray-300 text-sm">60s</button>
-        <button id="timer-90" class="px-3 py-1 bg-gray-200 hover:bg-gray-300 text-sm">90s</button>
+       <div class="mb-6 bg-white rounded-lg shadow p-4 no-print">
+    <div class="flex items-center justify-between">
+        <h2 class="text-lg font-semibold text-gray-700">Cronômetro de Descanso</h2>
+        <div class="flex items-center">
+            <div class="flex border rounded-lg overflow-hidden mr-2">
+                <button id="timer-30" class="px-3 py-1 bg-gray-200 hover:bg-gray-300 text-sm">30s</button>
+                <button id="timer-60" class="px-3 py-1 bg-gray-200 hover:bg-gray-300 text-sm">60s</button>
+                <button id="timer-90" class="px-3 py-1 bg-gray-200 hover:bg-gray-300 text-sm">90s</button>
+            </div>
+            <button id="timer-start" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700">Iniciar</button>
+            <button id="timer-stop" class="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700 ml-2">Parar</button>
+        </div>
     </div>
-    <button id="timer-start" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700">Iniciar</button>
-    <button id="timer-stop" class="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700 ml-2">Parar</button>
+    <div class="mt-3 flex items-center">
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div id="timer-progress" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+        </div>
+        <span id="timer-display" class="ml-3 text-xl font-bold text-blue-600 min-w-[60px] text-center">00:00</span>
+    </div>
 </div>
 
-                         <div class="mt-3 flex items-center">
-                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                    <div id="timer-progress" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
-                </div>
-                <span id="timer-display" class="ml-3 text-xl font-bold text-blue-600 min-w-[60px] text-center">00:00</span>
-            </div>
-        </div>
 
        <!-- Segunda-feira: Peito -->
 <div id="Segunda" class="tab-content active">
@@ -965,31 +966,34 @@
         });
 
         function setTimer(duration) {
-            timerDuration = duration;
-            document.getElementById('timer-display').textContent = `${duration}s`;
-            document.getElementById('timer-progress').style.width = '100%';
+    timerDuration = duration;
+    document.getElementById('timer-display').textContent = `${duration}s`;
+    document.getElementById('timer-progress').style.width = '100%';
+}
+
+function startTimer() {
+    const display = document.getElementById('timer-display');
+    const progressBar = document.getElementById('timer-progress');
+    let timeRemaining = timerDuration;
+    let startTime = Date.now();
+
+    timer = setInterval(() => {
+        const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        timeRemaining = timerDuration - elapsedTime;
+
+        if (timeRemaining >= 0) {
+            display.textContent = `${timeRemaining}s`;
+            // Barra diminui de 100% para 0%
+            progressBar.style.width = `${(timeRemaining / timerDuration) * 100}%`;
+        } else {
+            clearInterval(timer);
+            display.textContent = '00:00';
+            progressBar.style.width = '0%';
         }
+    }, 1000);
+}
 
-        function startTimer() {
-            const display = document.getElementById('timer-display');
-            const progressBar = document.getElementById('timer-progress');
-            let timeRemaining = timerDuration;
-            let startTime = Date.now();
 
-            timer = setInterval(() => {
-                const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-                timeRemaining = timerDuration - elapsedTime;
-
-                if (timeRemaining >= 0) {
-                    display.textContent = `${timeRemaining}s`;
-                    progressBar.style.width = `${((timerDuration - timeRemaining) / timerDuration) * 100}%`;
-                } else {
-                    clearInterval(timer);
-                    display.textContent = '00:00';
-                    progressBar.style.width = '0%';
-                }
-            }, 1000);
-        }
 
         // Botão de exclusão para históricos já existentes
         function addDeleteButtonsToHistory() {
